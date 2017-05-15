@@ -1,0 +1,78 @@
+TER : Automatically solving chess variants
+
+Idée de base : Reprendre le moteur "normal" mais en posant les pièces à l'intérieur d'un carré sur l'échiquier normal
+	- Filtrer les coups légaux habituels pour retirer ceux qui n'arrivent pas dans le sous échiquier (il suffit de faire un filtre is_in(case_arrivée)). 
+	- Promotions 
+		- En 6x6 supprimer les promotions fous
+		- Les coups spéciaux (type roque)
+		- Autres ?
+		
+Buts possibles : 
+	- Arriver à automatiser la preuve (Article Gardner Resolution : version semi manuelle; Automated Proofs for Games : notes mises en forme sur comment aborder le problème)
+	
+Matériel utilisé :
+	- Sources de StockFish
+	- GUI Arena
+		
+***************************** LISTE DES TACHES *****************************
+Liste :
+	- Lire les 2 articles
+	- Lire wikipédia MiniChess
+	- Reprendre la dernière (ou une des dernières) version de Stockfish et faire des branches github
+		- 5x5
+		- 6x6
+	- Différence avec la version officielle de StockFish à l'époque
+	- Comparer l'ancien github
+		- Autres méthodes pour filtrer ?
+	- Vérifier que l'ancien StockFish et l'ancien Gardner compilent.
+		- Réflechir à l'évolution avec la version actuelle.
+	- Protocole UCI
+	- Générateur d'oracle
+Ajout Mars :
+	- Notation Forsyth-Edwards (en anglais, Forsyth-Edwards Notation : FEN)
+	
+Doit être fait :
+	- Versions modifiées de StockFish qui compilent
+	- Protocole UCI ?
+	- Matchs entre mes versions et celles de Mehdi 
+		- Améliorations ?
+	- Vieille version de Gardner Chess (types.h : définition filtre is_in_gardner)
+
+***************************** AVANCEMENT *****************************
+Non Fait : 
+	- Reprendre la dernière (ou une des dernières) version de Stockfish et faire des branches github
+		- 5x5
+		- 6x6
+	- Générateur d'oracle
+		
+En cours : 
+	- Comparer l'ancien github 
+		- Autres méthodes pour filtrer ?
+	- Différence avec la version officielle de StockFish à l'époque
+	- Matchs entre mes versions et celles de Mehdi 
+		- Améliorations ?
+	- Mettre à jour GitHub
+		
+Fait :
+	- Lire les 2 articles
+	- Lire wikipédia MiniChess
+	- Apprendre (lire) le Protocole UCI
+	- Apprendre (lire) Notation Forsyth-Edwards (en anglais, Forsyth-Edwards Notation : FEN)
+	- Versions modifiées de StockFish qui compilent
+		- Vieille version de Gardner Chess (types.h : définition filtre is_in_gardner)
+		
+***************************** SOURCES *****************************
+Sources :
+	- Sujet du TER "Automatically solving chess variants" : http://im2ag-pcarre.e.ujf-grenoble.fr/CDExportProjetHtml?idSujet=2162
+	- Site traitant du sujet de Mr Prost : http://membres-lig.imag.fr/prost/MiniChessResolution/
+	- Article Gardner Resolution : Preuve version semi-manuelle
+	- Notes Automated Proofs for Games
+	- Vieille version de Gardner Chess
+	- Version de Mehdi Mhalla : https://github.com/MehdiMhalla/Stockfish
+	- Wikipédia sur les variantes MiniChess : https://en.wikipedia.org/wiki/Minichess
+	- Oracle : https://github.com/viroulep/chessfinder
+	- UCI Protocol : http://wbec-ridderkerk.nl/html/UCIProtocol.html
+	- StockFish : https://stockfishchess.org/
+	- Arena : http://www.playwitharena.com/
+	
+	- Notation Forsyth-Edwards (FEN) : https://fr.wikipedia.org/wiki/Notation_Forsyth-Edwards

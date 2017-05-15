@@ -1,0 +1,41 @@
+
+
+Idée de base : Reprendre le moteur "normal" mais en posant les pièces à l'intérieur d'un carré sur l'échiquier normal
+	- Filtrer les coups légaux habituels pour retirer ceux qui n'arrivent pas dans le sous échiquier (il suffit de faire un filtre is_in(case_arrivée). 
+	- Promotions 
+		- En 6x6 supprimer les promotions fous
+		- Les coups spéciaux (type roque)
+		- Autres ?
+		
+Buts possibles : 
+	- Arriver à automatiser la preuve (Article Gardner Resolution : version semi manuelle; Automated Proofs for Games : notes mises en forme sur comment aborder le problème)
+		
+A faire :
+	- Lire les 2 articles
+	- Lire wikipédia MiniChess
+	- Reprendre la dernière (ou une des dernières) version de Stockfish et faire des branches github
+		- 5x5
+		- 6x6
+	- Différence avec la version officielle de StockFish à l'époque
+	- Comparer l'ancien github
+		- Autres méthodes pour filtrer ?
+	- Vérifier que l'ancien StockFish et l'ancien Gardner compilent.
+		- Réflechir à l'évolution avec la version actuelle.
+	- Protocole UCI
+	- Générateur d'oracle
+	
+Doit être fait :
+	- Versions modifiées de StockFish qui compilent
+	- Protocole UCI ?
+	- Matchs entre mes versions et celles de Mehdi 
+		- Améliorations ?
+	- Vieille version de Gardner Chess (types.h : définition filtre is_in_gardner)
+	
+
+Sources :
+	- Sujet du TER "Automatically solving chess variants" : http://im2ag-pcarre.e.ujf-grenoble.fr/CDExportProjetHtml?idSujet=2162
+	- Article Gardner Resolution : Preuve version semi-manuelle
+	- Notes Automated Proofs for Games
+	- Vieille version de Gardner Chess
+	- Wikipédia sur les variantes MiniChess : https://en.wikipedia.org/wiki/Minichess
+	- Oracle : https://github.com/viroulep/chessfinder

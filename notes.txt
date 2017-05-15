@@ -1,0 +1,14 @@
+Pour utiliser les interfaces il faut commencer avec une position FEN de départ posant les pièces au bon endroit.
+
+  Pour gardner c'est :
+ "8/8/1rnbqk2/1ppppp2/8/1PPPPP2/1RNBQK2/8 w - - 0 1"
+ 
+ 
+Old Stockfish :
+	- bitcount.h
+	- platform.h
+	- syzygy/tbcore.cpp
+	- syzygy/tbcore.h
+	=!= psqtab.h ( new psqt.cpp )
+	+ thread_win32.h
+
