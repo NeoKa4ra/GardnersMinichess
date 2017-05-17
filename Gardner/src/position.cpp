@@ -25,9 +25,6 @@
 #include <iomanip>
 #include <sstream>
 
-#include <iostream>
-#include <bitset> // Pour comprendre la valeur des bits des moves
-
 #include "bitboard.h"
 #include "misc.h"
 #include "movegen.h"
@@ -519,16 +516,9 @@ bool Position::legal(Move m) const {
   
   assert(is_ok(m));
   
-  /*std::cout << "Valeur des bits et de la notation coordonnees : ";
-  std::bitset<16> x(m);
-  std::cout << x;
-  std::cout << "  ;  ";*/
   string coordinateNotation = UCI::move(m, true);
-  //std::cout << coordinateNotation;
-  // Dans Gardner, nous avons un terrain 5x5
-  // Nous ne pouvons donc pas nous rendre
-  // sur les cases interdites suivantes
-  // en destination 
+  // Empeche aux pieces de sortir de la configuration FEN 
+  // que nous avons determine
   if (  coordinateNotation[2] == 'a' 
   		|| coordinateNotation[2] == 'g' 
   		|| coordinateNotation[2] == 'h' 
