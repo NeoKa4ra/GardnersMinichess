@@ -17,3 +17,32 @@ Old Stockfish :
 	=!= psqtab.h ( new psqt.cpp )
 	+ thread_win32.h
 
+
+Valeur des bits et de la notation coordonnees : 000000 010110  ;  f1b5
+Valeur des bits et de la notation coordonnees : 000011 001010  ;  c7c6
+Valeur des bits et de la notation coordonnees : 000000 010110  ;  f1b5
+Valeur des bits et de la notation coordonnees : 000011 001010  ;  c7c6
+Valeur des bits et de la notation coordonnees : 000001 110010  ;  e4d5
+Valeur des bits et de la notation coordonnees : 000011 101110  ;  d8d5
+Valeur des bits et de la notation coordonnees : 000000 010110  ;  f1b5
+Valeur des bits et de la notation coordonnees : 000011 001010  ;  c7c6
+Valeur des bits et de la notation coordonnees : 000001 110010  ;  e4d5
+Valeur des bits et de la notation coordonnees : 000000 010110  ;  f1b5
+Valeur des bits et de la notation coordonnees : 000011 001010  ;  c7c6
+info depth 1 seldepth 1 multipv 1 score cp 6 nodes 31 nps 7750 tbhits 0 time 4 pv d7d5
+Valeur des bits et de la notation coordonnees : 000001 110010  ;  e4d5
+Valeur des bits et de la notation coordonnees : 000011 101110  ;  d8d5
+Valeur des bits et de la notation coordonnees : 000000 100001  ;  a2a3
+Valeur des bits et de la notation coordonnees : 000010 001101  ;  d5e4
+Valeur des bits et de la notation coordonnees : 000000 010110  ;  f1b5
+Valeur des bits et de la notation coordonnees : 000011 001010  ;  c7c6
+Valeur des bits et de la notation coordonnees : 000001 110010  ;  e4d5
+Valeur des bits et de la notation coordonnees : 000010 101010  ;  c6b5
+info depth 2 seldepth 2 multipv 1 score cp 77 nodes 59 nps 14750 tbhits 0 time 4 pv d7d5 e4d5
+
+/// A move needs 16 bits to be stored
+///
+/// bit  0- 5: destination square (from 0 to 63)
+/// bit  6-11: origin square (from 0 to 63)
+/// bit 12-13: promotion piece type - 2 (from KNIGHT-2 to QUEEN-2)
+/// bit 14-15: special move flag: promotion (1), en passant (2), castling (3)

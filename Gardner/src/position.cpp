@@ -25,6 +25,9 @@
 #include <iomanip>
 #include <sstream>
 
+#include <iostream>
+#include <bitset> // Pour comprendre la valeur des bits des moves
+
 #include "bitboard.h"
 #include "misc.h"
 #include "movegen.h"
@@ -513,9 +516,28 @@ Bitboard Position::attackers_to(Square s, Bitboard occupied) const {
 /// Position::legal() tests whether a pseudo-legal move is legal
 
 bool Position::legal(Move m) const {
-
+  
   assert(is_ok(m));
-
+  
+  /*std::cout << "Valeur des bits et de la notation coordonnees : ";
+  std::bitset<16> x(m);
+  std::cout << x;
+  std::cout << "  ;  ";*/
+  string coordinateNotation = UCI::move(m, true);
+  //std::cout << coordinateNotation;
+  // Dans Gardner, nous avons un terrain 5x5
+  // Nous ne pouvons donc pas nous rendre
+  // sur les cases interdites suivantes
+  // en destination 
+  if (  coordinateNotation[2] == 'a' 
+  		|| coordinateNotation[2] == 'g' 
+  		|| coordinateNotation[2] == 'h' 
+  		|| coordinateNotation[3] == '8' 
+  		|| coordinateNotation[3] == '7' 
+  		|| coordinateNotation[3] == '1'){
+  		return false;
+  }
+  
   Color us = sideToMove;
   Square from = from_sq(m);
 
