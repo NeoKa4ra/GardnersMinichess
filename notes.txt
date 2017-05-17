@@ -2,6 +2,7 @@ Pour utiliser les interfaces il faut commencer avec une position FEN de départ 
 
 	Pour gardner c'est :
 		position fen 8/8/1rnbqk2/1ppppp2/8/1PPPPP2/1RNBQK2/8 w - - 0 1
+		position startpos moves e3e4
  
 rnbqk/ppppp/5/PPPPP/RNBQK w - - 0 1
 
