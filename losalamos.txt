@@ -9,3 +9,34 @@ Afin de réaliser la version de Los Alamos, il faut comprendre les règles et le
 	- Les pions n'ont pas le double mouvement
 	- Les coups spéciaux "En Passant" et "Roque" ne sont pas actifs
 	- les pions ne peuvent pas devenir des fous
+	
+Le terrain 6x6, aucun fous au départ, et les deux coups spéciaux sont réglés avec la position FEN.
+
+Nous avons supprimé la promotion du fou dans la méthode extMove de movegen.cpp, "make<PROMOTION>(... BISHOP)"
+Pour gérer le double mouvement, nous avons supprimé tout ce qui le concerne dans la méthode ExtMove de movegen.cpp, à savoir les Bitboard b2 et l'utilisation des lignes de double mouvement des pions.
+	
+Pour comprendre ce qui à été fait dans le point suivant, nous allons définir un mouvement, appelé "move"
+Un mouvement a besoin de 16 bits pour être stocké :
+	- bit 0 - 5 : Carré de destination
+	- bit 6 - 11 : Carré d'origine
+	- bit 12 - 13 : Type de pièce en promotion
+	- bit 14 - 15 : Coups spéciaux
+Ces bits sont transformatables en notation de type coordonnées (g1f3, a7a8q) en chaîne de caractères, et inversement.
+
+Ce que nous avons fait pour interdire les coups allant en dehors du terrain :
+		Modification des coups "Légaux" dans les méthodes legal(move m) et pseudo_legal(move m) de position.cpp
+			En interdisant le coup sortant du carré prédifinit en FEN, c'est à dire que le coup n'est pas légal.
+Nous avons également interdit les coups venant du dehors du terrain, ce qui n'est pas censé être possible, de la même façon.
+Les pièces présentes sont définies dans la position FEN de départ, et les promotions des pions sont les mêmes que pour l'échiquier basique, donc aucune modification là dessus.
+Les promotions ont été gérées dans movegen.cpp :
+	- chaque ligne qui était référencée en "ligne 8" est devenue "ligne 7"
+	- chaque ligne qui était référencée en "ligne 7" est devenue "ligne 6"
+	- chaque ligne qui était référencée en "ligne 1" est devenue "ligne 2"
+	- chaque ligne qui était référencée en "ligne 2" est devenue "ligne 3"
+Ceci correspondant à la potion FEN de départ, afin de rester en cohérence avec celle-ci.
+
+
+Problèmes rencontrés :
+	- Utilisation de Arena et des coups non compris
+	- Utilisation de Arena et promotion illégale au milieu du terrain pour celle-ci
+	- Difficulté des tests
