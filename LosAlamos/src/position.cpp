@@ -515,6 +515,12 @@ Bitboard Position::attackers_to(Square s, Bitboard occupied) const {
 bool Position::legal(Move m) const {
 
   assert(is_ok(m));
+  
+  // Respecter la configuration FEN mise en place pour LosAlamos
+  string coordinateNotation = UCI::move(m, true);
+  if (  (coordinateNotation[0] == 'a')  || (coordinateNotation[0] == 'h') || (coordinateNotation[1] == '8') || (coordinateNotation[1] == '1') || (coordinateNotation[2] == 'a') || (coordinateNotation[2] == 'h') || (coordinateNotation[3] == '8') || (coordinateNotation[3] == '1')){
+   		return false;
+   }
 
   Color us = sideToMove;
   Square from = from_sq(m);
@@ -564,6 +570,12 @@ bool Position::pseudo_legal(const Move m) const {
   Square from = from_sq(m);
   Square to = to_sq(m);
   Piece pc = moved_piece(m);
+    
+  // Respecter la configuration FEN mise en place pour LosAlamos
+  string coordinateNotation = UCI::move(m, true);
+  if (  (coordinateNotation[0] == 'a')  || (coordinateNotation[0] == 'h') || (coordinateNotation[1] == '8') || (coordinateNotation[1] == '1') || (coordinateNotation[2] == 'a') || (coordinateNotation[2] == 'h') || (coordinateNotation[3] == '8') || (coordinateNotation[3] == '1')){
+   		return false;
+   }
 
   // Use a slower but simpler function for uncommon cases
   if (type_of(m) != NORMAL)
