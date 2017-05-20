@@ -519,7 +519,7 @@ bool Position::legal(Move m) const {
   string coordinateNotation = UCI::move(m, true);
   // Empeche aux pieces de sortir de la configuration FEN 
   // que nous avons determine
-  if (  (coordinateNotation[0] == 'a') || (coordinateNotation[0] == 'g') || (coordinateNotation[0] == 'h') || (coordinateNotation[1] == '8') || (coordinateNotation[1] == '7') || (coordinateNotation[1] == '1')){
+  if (  (coordinateNotation[0] == 'a') || (coordinateNotation[0] == 'g') || (coordinateNotation[0] == 'h') || (coordinateNotation[1] == '8') || (coordinateNotation[1] == '7') || (coordinateNotation[1] == '1') || (coordinateNotation[2] == 'a') || (coordinateNotation[2] == 'g') || (coordinateNotation[2] == 'h') || (coordinateNotation[3] == '8') || (coordinateNotation[3] == '7') || (coordinateNotation[3] == '1')){
   		return false;
   }
   Color us = sideToMove;
