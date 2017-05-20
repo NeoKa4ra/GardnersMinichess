@@ -1,0 +1,11 @@
+Pour utiliser les interfaces il faut commencer avec une position FEN de départ posant les pièces au bon endroit.
+
+	Pour Los Alamos c'est :
+		position fen 8/8/1rnqknr1/1pppppp1/8/1PPPPPP1/1RNQKNR1/8 w - - 0 1
+		
+Afin de réaliser la version de Los Alamos, il faut comprendre les règles et les appliquer :
+	- Terrain 6x6
+	- Aucun fous
+	- Les pions n'ont pas le double mouvement
+	- Les coups spéciaux "En Passant" et "Roque" ne sont pas actifs
+	- les pions ne peuvent pas devenir des fous
