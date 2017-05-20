@@ -1,0 +1,39 @@
+Pour utiliser les interfaces il faut commencer avec une position FEN de départ posant les pièces au bon endroit.
+
+	Pour gardner c'est :
+		position fen 8/8/1rnbqk2/1ppppp2/8/1PPPPP2/1RNBQK2/8 w - - 0 1
+		
+Afin de réaliser la version de Gardner, il faut comprendre les règles et les appliquer :
+	- Les coups spéciaux nommés "Roque" et "En Passant" ne sont pas possibles.
+	- Le terrain est en 5x5
+	- Les pièces sont :
+		Tour Cavalier Fou Reine Roi
+		Pion x5
+	- Les promotions se font aux lignes des extémités du terrain
+	
+Pour se faire, nous avons supprimé les coups spéciaux à l'aide de la position FEN
+
+Pour comprendre ce qui à été fait dans le point suivant, nous allons définir un mouvement, appelé "move"
+Un mouvement a besoin de 16 bits pour être stocké :
+	- bit 0 - 5 : Carré de destination
+	- bit 6 - 11 : Carré d'origine
+	- bit 12 - 13 : Type de pièce en promotion
+	- bit 14 - 15 : Coups spéciaux
+Ces bits sont transformatables en notation de type coordonnées (g1f3, a7a8q) en chaîne de caractères, et inversement.
+Ce que nous avons fait pour interdire les coups allant en dehors du terrain :
+		Modification des coups "Légaux" dans les méthodes legal(move m) et pseudo_legal(move m) de position.cpp
+			En interdisant le coup sortant du carré prédifinit en FEN
+Nous avons également interdit les coups venant du dehors du terrain, ce qui n'est pas censé être possible, de la même façon.
+Les pièces présentes sont définies dans la position FEN de départ, et les promotions des pions sont les mêmes que pour l'échiquier basique, donc aucune modification là dessus.
+Les promotions ont été gérées dans movegen.cpp :
+	- chaque ligne qui était référencée en "ligne 8" est devenue "ligne 6"
+	- chaque ligne qui était référencée en "ligne 7" est devenue "ligne 5"
+	- chaque ligne qui était référencée en "ligne 1" est devenue "ligne 2"
+	- chaque ligne qui était référencée en "ligne 2" est devenue "ligne 3"
+Ceci correspondant à la potion FEN de départ, afin de rester en cohérence avec celle-ci.
+
+
+Problèmes rencontrés :
+	- Utilisation de Arena et des coups non compris
+	- Utilisation de Arena et promotion illégale au milieu du terrain pour celle-ci
+	- Difficulté des tests
