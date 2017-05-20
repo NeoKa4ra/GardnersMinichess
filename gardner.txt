@@ -20,9 +20,10 @@ Un mouvement a besoin de 16 bits pour être stocké :
 	- bit 12 - 13 : Type de pièce en promotion
 	- bit 14 - 15 : Coups spéciaux
 Ces bits sont transformatables en notation de type coordonnées (g1f3, a7a8q) en chaîne de caractères, et inversement.
+
 Ce que nous avons fait pour interdire les coups allant en dehors du terrain :
 		Modification des coups "Légaux" dans les méthodes legal(move m) et pseudo_legal(move m) de position.cpp
-			En interdisant le coup sortant du carré prédifinit en FEN
+			En interdisant le coup sortant du carré prédifinit en FEN, c'est à dire que le coup n'est pas légal.
 Nous avons également interdit les coups venant du dehors du terrain, ce qui n'est pas censé être possible, de la même façon.
 Les pièces présentes sont définies dans la position FEN de départ, et les promotions des pions sont les mêmes que pour l'échiquier basique, donc aucune modification là dessus.
 Les promotions ont été gérées dans movegen.cpp :
