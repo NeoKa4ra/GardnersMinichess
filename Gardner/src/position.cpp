@@ -34,6 +34,8 @@
 #include "uci.h"
 #include "syzygy/tbprobe.h"
 
+#include <iostream>
+
 using std::string;
 
 namespace PSQT {
@@ -512,16 +514,17 @@ Bitboard Position::attackers_to(Square s, Bitboard occupied) const {
 
 /// Position::legal() tests whether a pseudo-legal move is legal
 
-bool Position::legal(Move m) const {
+bool Position::legal(Move m) const{
   
   assert(is_ok(m));
   
-  string coordinateNotation = UCI::move(m, true);
+  string coordinateNotation = UCI::move(m, false);
   // Empeche aux pieces de sortir de la configuration FEN 
   // que nous avons determine
   if (  (coordinateNotation[0] == 'a') || (coordinateNotation[0] == 'g') || (coordinateNotation[0] == 'h') || (coordinateNotation[1] == '8') || (coordinateNotation[1] == '7') || (coordinateNotation[1] == '1') || (coordinateNotation[2] == 'a') || (coordinateNotation[2] == 'g') || (coordinateNotation[2] == 'h') || (coordinateNotation[3] == '8') || (coordinateNotation[3] == '7') || (coordinateNotation[3] == '1')){
   		return false;
   }
+
   Color us = sideToMove;
   Square from = from_sq(m);
 
@@ -566,10 +569,10 @@ bool Position::legal(Move m) const {
 
 bool Position::pseudo_legal(const Move m) const {
 
-  string coordinateNotation = UCI::move(m, true);
+  string coordinateNotation = UCI::move(m, false);
   // Empeche aux pieces de sortir de la configuration FEN 
   // que nous avons determine
-  if (  (coordinateNotation[0] == 'a') || (coordinateNotation[0] == 'g') || (coordinateNotation[0] == 'h') || (coordinateNotation[1] == '8') || (coordinateNotation[1] == '7') || (coordinateNotation[1] == '1')){
+  if (  (coordinateNotation[0] == 'a') || (coordinateNotation[0] == 'g') || (coordinateNotation[0] == 'h') || (coordinateNotation[1] == '8') || (coordinateNotation[1] == '7') || (coordinateNotation[1] == '1') || (coordinateNotation[2] == 'a') || (coordinateNotation[2] == 'g') || (coordinateNotation[2] == 'h') || (coordinateNotation[3] == '8') || (coordinateNotation[3] == '7') || (coordinateNotation[3] == '1')){
   		return false;
   }
   
@@ -703,6 +706,7 @@ void Position::do_move(Move m, StateInfo& newSt, bool givesCheck) {
 
   assert(is_ok(m));
   assert(&newSt != st);
+  
 
   ++nodes;
   Key k = st->key ^ Zobrist::side;

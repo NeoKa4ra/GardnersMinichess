@@ -97,7 +97,6 @@ namespace {
     const Color    Them     = (Us == WHITE ? BLACK      : WHITE);
     const Bitboard TRank6BB = (Us == WHITE ? Rank6BB    : Rank2BB);
     const Bitboard TRank5BB = (Us == WHITE ? Rank5BB    : Rank3BB);
-    const Bitboard TRank4BB = (Us == WHITE ? Rank4BB    : Rank4BB);
     const Square   Up       = (Us == WHITE ? NORTH      : SOUTH);
     const Square   Right    = (Us == WHITE ? NORTH_EAST : SOUTH_WEST);
     const Square   Left     = (Us == WHITE ? NORTH_WEST : SOUTH_EAST);
@@ -116,12 +115,10 @@ namespace {
         emptySquares = (Type == QUIETS || Type == QUIET_CHECKS ? target : ~pos.pieces());
 
         Bitboard b1 = shift<Up>(pawnsNotOn5)   & emptySquares;
-        Bitboard b2 = shift<Up>(b1 & TRank4BB) & emptySquares;
 
         if (Type == EVASIONS) // Consider only blocking squares
         {
             b1 &= target;
-            b2 &= target;
         }
 
         if (Type == QUIET_CHECKS)
@@ -129,7 +126,6 @@ namespace {
             Square ksq = pos.square<KING>(Them);
 
             b1 &= pos.attacks_from<PAWN>(ksq, Them);
-            b2 &= pos.attacks_from<PAWN>(ksq, Them);
 
             // Add pawn pushes which give discovered check. This is possible only
             // if the pawn is not on the same file as the enemy king, because we
@@ -139,10 +135,8 @@ namespace {
             if (pawnsNotOn5 & dcCandidates)
             {
                 Bitboard dc1 = shift<Up>(pawnsNotOn5 & dcCandidates) & emptySquares & ~file_bb(ksq);
-                Bitboard dc2 = shift<Up>(dc1 & TRank4BB) & emptySquares;
 
                 b1 |= dc1;
-                b2 |= dc2;
             }
         }
 
@@ -152,11 +146,6 @@ namespace {
             *moveList++ = make_move(to - Up, to);
         }
 
-        while (b2)
-        {
-            Square to = pop_lsb(&b2);
-            *moveList++ = make_move(to - Up - Up, to);
-        }
     }
 
     // Promotions and underpromotions

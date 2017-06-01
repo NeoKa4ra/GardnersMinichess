@@ -38,8 +38,8 @@ extern void benchmark(const Position& pos, istream& is);
 
 namespace {
 
-  // FEN string of the initial position, normal chess
-  const char* StartFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+  // FEN string of the initial position, gardner chess
+  const char* StartFEN = "8/8/1rnbqk2/1ppppp2/8/1PPPPP2/1RNBQK2/8 w - - 0 1";
 
   // A list to keep track of the position states along the setup moves (from the
   // start position to the position just before the search starts). Needed by

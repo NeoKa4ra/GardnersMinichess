@@ -37,6 +37,7 @@
 #include "uci.h"
 #include "syzygy/tbprobe.h"
 
+
 namespace Search {
 
   SignalsType Signals;
@@ -952,6 +953,13 @@ moves_loop: // When in check search starts from here
           ss->moveCount = --moveCount;
           continue;
       }
+      
+            
+      string coordinateNotation = UCI::move(move, false);
+	  if (  (coordinateNotation[0] == 'a') || (coordinateNotation[0] == 'g') || (coordinateNotation[0] == 'h') || (coordinateNotation[1] == '8') || (coordinateNotation[1] == '7') || (coordinateNotation[1] == '1') || (coordinateNotation[2] == 'a') || (coordinateNotation[2] == 'g') || (coordinateNotation[2] == 'h') || (coordinateNotation[3] == '8') || (coordinateNotation[3] == '7') || (coordinateNotation[3] == '1')){
+          ss->moveCount = --moveCount;
+          continue;
+	  }
 
       // Update the current move (this must be done after singular extension search)
       ss->currentMove = move;

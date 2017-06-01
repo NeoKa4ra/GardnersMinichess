@@ -38,3 +38,15 @@ Problèmes rencontrés :
 	- Utilisation de Arena et des coups non compris
 	- Utilisation de Arena et promotion illégale au milieu du terrain pour celle-ci
 	- Difficulté des tests
+	
+	8/8/1rnbqk2/1p1ppp2/1P6/3PPP2/1RNBQK2/8 b - - 0 2 
+	8/8/1rnb1k2/1p1ppp2/1P3P2/3PP3/1RNBQKq1/8 w - - 1 4 
+	8/8/1rnb1k2/1p1p1p2/1P6/3PpK2/1RNBQ3/8 b - - 1 6 
+	8/8/1rn5/1p1pPk2/1P3p2/4pK2/1RNBQ3/8 w - - 1 9 
+	8/8/1rn1Q3/1p1p1k2/1P3p2/4pK2/1RNBQ3/8 b - - 0 9 
+	8/8/1rn1k3/1p6/1P1p1K2/4B3/1RN1Q3/8 b - - 0 11 
+	
+	8/8/1rnbqk2/1p1ppp2/3p4/1PP1PP2/1RNBQK2/8 w - - 0 2 
+	
+	8/8/1rnbqk2/3ppp2/1p1P4/1PP2P2/1RNBQK2/8 w - - 0 3 
+	8/8/8/4b3/1p2k3/1P6/2K2q2/8 w - - 0 24 
