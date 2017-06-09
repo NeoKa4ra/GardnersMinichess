@@ -39,7 +39,7 @@ extern void benchmark(const Position& pos, istream& is);
 namespace {
 
   // FEN string of the initial position, normal chess
-  const char* StartFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+  const char* StartFEN = "8/1rnqknr1/1pppppp1/8/8/1PPPPPP1/1RNQKNR1/8 w - - 0 1";
 
   // A list to keep track of the position states along the setup moves (from the
   // start position to the position just before the search starts). Needed by

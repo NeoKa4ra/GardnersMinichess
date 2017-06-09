@@ -517,7 +517,7 @@ bool Position::legal(Move m) const {
   assert(is_ok(m));
   
   // Respecter la configuration FEN mise en place pour LosAlamos
-  string coordinateNotation = UCI::move(m, true);
+  string coordinateNotation = UCI::move(m, false);
   if (  (coordinateNotation[0] == 'a')  || (coordinateNotation[0] == 'h') || (coordinateNotation[1] == '8') || (coordinateNotation[1] == '1') || (coordinateNotation[2] == 'a') || (coordinateNotation[2] == 'h') || (coordinateNotation[3] == '8') || (coordinateNotation[3] == '1')){
    		return false;
    }
@@ -572,7 +572,7 @@ bool Position::pseudo_legal(const Move m) const {
   Piece pc = moved_piece(m);
     
   // Respecter la configuration FEN mise en place pour LosAlamos
-  string coordinateNotation = UCI::move(m, true);
+  string coordinateNotation = UCI::move(m, false);
   if (  (coordinateNotation[0] == 'a')  || (coordinateNotation[0] == 'h') || (coordinateNotation[1] == '8') || (coordinateNotation[1] == '1') || (coordinateNotation[2] == 'a') || (coordinateNotation[2] == 'h') || (coordinateNotation[3] == '8') || (coordinateNotation[3] == '1')){
    		return false;
    }
